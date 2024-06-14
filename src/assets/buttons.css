@@ -1,0 +1,41 @@
+:root{
+    --bg-color-btn: #DEA83F;
+    --color-text: #ffffff;
+}
+
+.btn{
+    padding: 20px 50px;
+    background-color: var(--bg-color-btn);
+    border: 1px solid var(--color-text);
+    border-radius: 5px;
+    color: white;
+    transition: 0.22s;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn:hover{
+    transform: scale(1.02);
+}
+
+.btn-start{
+    width: 50%;
+    align-self: center;
+}
+
+.btn-game{
+    padding: 15px 10px;
+    background-color: #2B3049;
+    width: 50px;
+    color: #B8B9BD;
+    border: 1px solid #B8B9BD;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.btn.active {
+    background-color: #DEA83F;
+    color: white;
+
+    transform: scale(1.2);
+  }
