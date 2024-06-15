@@ -1,16 +1,22 @@
-import { useState, React } from 'react';
+import React, { useState } from 'react';
 import { MyButton } from './utils/Buttons';
 import { GameWindow } from './GameWindow';
+import { DificultWindow } from './DifficultWindow';
 import { Sounds } from '../scripts/Sounds';
 
 const sounds = new Sounds();
 
 export function Menu() {
   const [showGameWindow, setShowGameWindow] = useState(false);
+  const [difficulty, setDifficulty] = useState(null);
 
   const handleStartClick = () => {
-    sounds.startSound();
-    setShowGameWindow(true);
+    if (difficulty !== null) {
+      sounds.startSound();
+      setShowGameWindow(true);
+    } else {
+      alert("Selecione uma dificuldade.");
+    }
   };
 
   const handleRestart = () => {
@@ -27,6 +33,7 @@ export function Menu() {
 
   return (
     <main>
+      {!showGameWindow && <DificultWindow onDifficultySelect={setDifficulty} />}
       <section className='body-menu'>   
         <div className='start-container'>
           <h1>Mini-Game</h1>
@@ -39,9 +46,9 @@ export function Menu() {
             />
           )}
         </div>
-        
-        {showGameWindow && (
+        {showGameWindow && difficulty !== null && (
           <GameWindow 
+            difficulty={difficulty}
             onRestart={handleRestart}
             onBackToMenu={handleBackToMenu}
           />
